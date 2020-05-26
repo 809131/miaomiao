@@ -1,0 +1,8 @@
+/* pages/editUserInfo/name/name.wxss */
+button{
+  border-bottom:1px solid #b4b5b6;
+}
+input{
+  border: 1px solid #b4b5b6;
+  margin:20rpx 10rpx;
+}

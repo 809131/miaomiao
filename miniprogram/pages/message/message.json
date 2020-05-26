@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "removw-list": "/components/removeList/removeList"
+  }
+}

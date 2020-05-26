@@ -1,0 +1,37 @@
+<!--pages/index/index.wxml-->
+<wxs src="../../utils/wordSplit.wxs" module="m1" />
+<wxs src="../../utils/unitFormat.wxs" module="m2" />
+
+
+<view class="index">
+	<swiper class="index-swiper" indicator-dots="{{true}}" autoplay="{{true}}" circular="{{true}}">
+		<block wx:for="{{imgUrls}}" wx:key="index">
+			<swiper-item>
+				<image src="{{item}}" class="slide-image"></image>
+			</swiper-item>
+		</block>
+	</swiper>
+	<view class="index-tab">
+		<view class="{{current == 'links' ? 'active' :''}}" data-current="links" bindtap="handleCurrent">推荐</view>
+		<view class="{{current == 'time' ? 'active' :''}}" data-current="time" bindtap="handleCurrent">最新</view>
+	</view>
+
+
+
+  <view class="index-list">
+    <view class="index-list-item" wx:for="{{ listData }}" wx:key="idnex">
+     <!-- 问题1：图片有明显的压缩 在image中添加属性mode="aspecFill"
+      缩放模式，保持纵横比缩放图片，只保证图片的短边能完全显示出来。也就是说，图片通常只在水平或垂直方向是完整的，另一个方向将会发生截取。-->
+      <image mode="aspectFill" src="{{item.userPhote}}" bindtap="handleDetail" data-id="{{item._id}}"/>
+      <view class="index-list-text">
+      <!-- wxs的使用 -->
+        <text>{{m1.wordSplit(item.nickName)}}</text>
+        <text  data-id="{{item._id}}" bindtap="handleLinks">
+          <text class="iconfont icondianzan"></text>
+          <text>{{m2.unitFormat(item.links)}}</text>
+        </text>
+      </view>
+    </view>
+  </view>
+
+</view>
